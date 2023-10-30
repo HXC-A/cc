@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cc</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ClassmateConnect</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <header name="top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+          <!-- Branding -->
+          <a class="navbar-brand" href="/">ClassmateConnect</a>
+          <!-- Toggler button for mobile nav -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Navbar Links -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+
+              <% if session[:user_id] %>
+                <li class="nav-item"><%= link_to "#{@user.username}, exit", session_path(@user), data: { "turbo-method": :delete }, class: 'nav-link' %></li>
+              <% else %>
+                <li class="nav-item"><%= link_to "Login", new_session_path, class: 'nav-link' %></li>
+              <% end %>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+  <!-- Bootstrap JS (Popper.js and Bootstrap JS) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+
+
+    <div class="container body-offset">
+      <% if flash[:notice] %>
+        <div class="alert alert-info"><%= flash[:notice] %></div>
+      <% end -%>
+      <%= yield %>
+    </div>
   </body>
 </html>

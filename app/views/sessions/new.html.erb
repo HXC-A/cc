@@ -1,0 +1,19 @@
+<h1>User Login</h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= form_tag sessions_path, method: "post" do %>
+      <div class="mb-3">
+        <%= text_field_tag :username, nil, placeholder: "Username...", class: "form-control", id: "form_username", title: "Username 6-12 characters" %>
+      </div>
+      <div class="mb-3">
+        <%= password_field_tag :password, nil, placeholder: "Password...", class: "form-control", id: "form_password" %>
+      </div>
+      <%= submit_tag "Login", class: "btn btn-primary" %> 
+      <%= link_to "Register", new_user_path, class: "btn btn-link" %>
+    <% end %>
+  </div>
+  <div class="col-md-8">
+    <!-- Optional content can go here -->
+  </div>
+</div>
