@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+We choose to use ruby 3.2.2, rails 7.1.1 in our project.
