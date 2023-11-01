@@ -16,7 +16,10 @@ gem 'sass-rails', '~> 6.0'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
-
+gem 'capybara'
+gem 'selenium-webdriver'
+gem 'cucumber', '< 9.0'
+gem 'cucumber-rails', '2.6.1'
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
@@ -71,3 +74,4 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
