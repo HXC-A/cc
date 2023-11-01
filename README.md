@@ -21,3 +21,4 @@ How to run spec test:
 bundle exec rake db:migrate
 bundle exec rake db:test:prepare
 rspec ./spec/sessions_controller_spec.rb
+rspec ./spec/users_controller_spec.rb
