@@ -9,7 +9,8 @@ gem "rails", "~> 7.1.1"
 gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# gem "sqlite3", "~> 1.4"
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 6.0'
@@ -76,9 +77,8 @@ group :test do
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'simplecov', require: false
+  gem "sqlite3"
 end
 
-group :production do
-  gem 'pg' # for Heroku deployment
-end
+
 
