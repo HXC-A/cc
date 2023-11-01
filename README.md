@@ -18,3 +18,6 @@ bundle exec cucumber
 will run the cucumber test we create for this check point.
 
 How to run spec test:
+bundle exec rake db:migrate
+bundle exec rake db:test:prepare
+rspec ./spec/sessions_controller_spec.rb
