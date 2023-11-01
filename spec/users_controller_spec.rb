@@ -38,6 +38,19 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to render_template(:new)
       end
     end
+
+    context 'with invalid attributes' do
+      it 'does not save the user' do
+        expect {
+          post :create, params: { user: { username: nil, password: nil } }
+        }.to_not change(User, :count)
+      end
+      
+      it 're-renders the new template' do
+        post :create, params: { user: { username: nil, password: nil } }
+        expect(response).to render_template(:new)
+      end
+    end
   end
 
 end
