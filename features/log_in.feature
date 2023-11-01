@@ -7,17 +7,17 @@ Feature: display list of movies filtered by MPAA rating
 Scenario: Successful login
     Given I am on login page
     When I enter my valid username and password
-    And I click the "Log In" button
-    Then I am on the classmate connect home page
+    And I press "Login" 
+    And I should see a welcome message
 
 Scenario: Unsuccessful login with missing credentials
     Given I am on login page
     When I leave password fields blank
-    And I click the "Log In" button
-    Then I am on the login page
+    And I press "submit"
+    Then I am on page login
 
 Scenario: Unsuccessful login with invalid credentials
     Given I am on login page
     When I enter my invalid username and password
-    And I click the "Log In" button
-    Then I am on the login page
+    And I press "Login"
+    Then I am on page login

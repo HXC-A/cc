@@ -14,3 +14,7 @@ bin/rake db:setup # shorthand for db:create, db:migrate, db:seed
 bin/rails server -b 0.0.0.0
 
 How to run the cucumber test:
+bundle exec cucumber
+will run the cucumber test we create for this check point.
+
+How to run spec test:
