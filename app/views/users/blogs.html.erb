@@ -1,0 +1,29 @@
+<h1>Blog of <%= current_user.username %></h1>
+
+<div>
+  <%= link_to "Create a blog", new_blog_path, class: "btn btn-primary" %>
+  <%= link_to "My blog", blogs_user_path(current_user), class: "btn btn-primary" %>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+      </tr>
+      <% @blogs.each do |blog| %>
+        <tr>
+          <td><%= blog.id %></td>
+          <td>
+            <%= link_to blog.title, blog_path(blog) %>  
+          </td>
+          <td><%= blog.user.username %></td>
+        </tr>
+      <% end -%>
+    </table>
+
+    <%= will_paginate @blogs %>
+  </div>
+</div>
