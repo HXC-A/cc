@@ -28,11 +28,17 @@
                 <a class="nav-link" href="/">Home</a>
               </li>
 
-              <% if session[:user_id] %>
-                <li class="nav-item"><%= link_to "#{@user.username}, exit", session_path(@user), data: { "turbo-method": :delete }, class: 'nav-link' %></li>
+              <li class="nav-item">
+                <a class="nav-link" href="<%= users_path %>">User</a>
+              </li>
+
+              <% if logged_in? %>
+                <li class="nav-item"><%= link_to "#{current_user.username}, exit", session_path(session[:user_id]), data: { "turbo-method": :delete }, class: 'nav-link' %></li>
               <% else %>
                 <li class="nav-item"><%= link_to "Login", new_session_path, class: 'nav-link' %></li>
               <% end %>
+
+              <li class="nav-item"><%= link_to "Blog", blogs_path, class: 'nav-link' %></li>
 
             </ul>
           </div>

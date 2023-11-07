@@ -5,4 +5,5 @@ class User < ApplicationRecord
     validates :password, presence: { message: "Password can not be blank" }
     validates :password, length: { minimum: 6, message: "The minimum password length is 6 characters" }
 
+    has_many :blogs
 end
