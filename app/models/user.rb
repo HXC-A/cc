@@ -6,4 +6,6 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 6, message: "The minimum password length is 6 characters" }
 
     has_many :blogs
+    has_many :public_blogs, -> { where(is_public: true) },
+        class_name: "Blog"
 end

@@ -5,5 +5,7 @@ class Blog < ApplicationRecord
     validates :user_id, presence: { message: "The user cannot be empty" }
 
     belongs_to :user
+    has_many :blogs_tags, class_name: "BlogsTags"
+    has_many :tags, through: :blogs_tags
 
 end

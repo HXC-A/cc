@@ -1,8 +1,8 @@
-<h1>Create a blog</h1>
+<h1><%= @blog.new_record? ? 'Create' : 'Edit' %> blog</h1>
 
 <div class="row">
   <div class="col-md-5">
-    <%= form_with model: @blog, url: blogs_path, method: :post, local: true do |f| %>
+    <%= form_with model: @blog, url: (@blog.new_record? ? blogs_path : blog_path(@blog)), method: (@blog.new_record? ? :post : :put), local: true do |f| %>
       <% if @blog.errors.any? %>
         <div class="alert alert-danger">
           <ul class="mb-0">
@@ -20,6 +20,24 @@
       <div class="mb-3">
         <%= f.text_area :content, class: "form-control", placeholder: "Content" %>
       </div>
+
+      <div class="mb-3">
+        <input type="text" name="tags" value="<%= @blog.tags.map(&:title).join(',') %>"
+          class="form-control" placeholder="Enter tags" aria-label="Tags" aria-describedby="tags-help">
+        <div id="tags-help" class="form-text">Tags are separated by commas</div>
+      </div>
+
+      <div class="mb-3">
+        <% [[true, "show"], [false, "hide"]].each do |public_option| %>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="blog[is_public]" id="blog_is_public_<%= public_option.first %>" value="<%= public_option.first %>" <%= 'checked' if @blog.is_public == public_option.first %> />
+            <label class="form-check-label" for="blog_is_public_<%= public_option.first %>">
+              <%= public_option.last %>
+            </label>
+          </div>
+        <% end %>
+      </div>
+
 
       <%= f.submit "Save", class: "btn btn-primary" %> 
     <% end %>
