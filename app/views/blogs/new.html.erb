@@ -22,7 +22,7 @@
       </div>
 
       <div class="mb-3">
-        <input type="text" name="tags" value="<%= @blog.tags.map(&:title).join(',') %>"
+        <input type="text" name="blog[tags_string]" value="<%= @blog.tags.map(&:title).join(',') %>"
           class="form-control" placeholder="Enter tags" aria-label="Tags" aria-describedby="tags-help">
         <div id="tags-help" class="form-text">Tags are separated by commas</div>
       </div>
