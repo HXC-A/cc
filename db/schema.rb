@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_08_031645) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_10_204913) do
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -24,6 +24,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_08_031645) do
   create_table "blogs_tags", force: :cascade do |t|
     t.integer "blog_id"
     t.integer "tag_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "receiver_id"
+    t.text "content"
+    t.boolean "is_read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|

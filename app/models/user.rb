@@ -8,4 +8,7 @@ class User < ApplicationRecord
     has_many :blogs
     has_many :public_blogs, -> { where(is_public: true) },
         class_name: "Blog"
+
+    has_many :inboxes, class_name: :Message, foreign_key: :receiver_id
+    has_many :outboxes, class_name: :Message, foreign_key: :sender_id
 end
