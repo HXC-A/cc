@@ -26,7 +26,7 @@
           <td><%= truncate message.content, length: 30 %></td>
           <td><%= message.is_read_to_s %></td>
           <td>
-            <%= link_to "详情", message_path(message) %>
+            <%= link_to "more info", message_path(message) %>
           </td>
         </tr>
       <% end -%>
