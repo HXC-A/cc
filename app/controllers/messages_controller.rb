@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
         @message = Message.find(params[:id])
         unless @message.sender == current_user or 
             @message.receiver == current_user
-            render text: "403 Forbidden"
+            render plain: "403 Forbidden"
             return
         else
             if @message.receiver == current_user
