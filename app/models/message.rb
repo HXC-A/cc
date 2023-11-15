@@ -16,7 +16,7 @@ class Message < ApplicationRecord
 
     def receiver_username= username
         if user = User.find_by(username: username)
-        self.receiver = user
+            self.receiver = user
         end
     end
 
