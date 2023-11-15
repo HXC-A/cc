@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/alan/cc/app/controllers/blogs_controller.rb": {
+      "/Users/wwr/Desktop/cc/app/controllers/blogs_controller.rb": {
         "lines": [
           1,
           1,
@@ -56,7 +56,7 @@
           null
         ]
       },
-      "/home/alan/cc/app/controllers/application_controller.rb": {
+      "/Users/wwr/Desktop/cc/app/controllers/application_controller.rb": {
         "lines": [
           1,
           1,
@@ -73,7 +73,7 @@
           null
         ]
       },
-      "/home/alan/cc/app/controllers/concerns/user_session.rb": {
+      "/Users/wwr/Desktop/cc/app/controllers/concerns/user_session.rb": {
         "lines": [
           1,
           1,
@@ -108,7 +108,7 @@
           null
         ]
       },
-      "/home/alan/cc/app/models/blog.rb": {
+      "/Users/wwr/Desktop/cc/app/models/blog.rb": {
         "lines": [
           1,
           null,
@@ -134,14 +134,14 @@
           null
         ]
       },
-      "/home/alan/cc/app/models/application_record.rb": {
+      "/Users/wwr/Desktop/cc/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/alan/cc/app/models/blogs_tags.rb": {
+      "/Users/wwr/Desktop/cc/app/models/blogs_tags.rb": {
         "lines": [
           1,
           null,
@@ -155,7 +155,90 @@
           null
         ]
       },
-      "/home/alan/cc/app/controllers/sessions_controller.rb": {
+      "/Users/wwr/Desktop/cc/app/controllers/messages_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/wwr/Desktop/cc/app/models/message.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          2,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          7,
+          6,
+          6,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/wwr/Desktop/cc/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -181,7 +264,7 @@
           null
         ]
       },
-      "/home/alan/cc/app/models/tag.rb": {
+      "/Users/wwr/Desktop/cc/app/models/tag.rb": {
         "lines": [
           1,
           1,
@@ -192,7 +275,7 @@
           null
         ]
       },
-      "/home/alan/cc/app/models/user.rb": {
+      "/Users/wwr/Desktop/cc/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -210,7 +293,7 @@
           null
         ]
       },
-      "/home/alan/cc/app/controllers/users_controller.rb": {
+      "/Users/wwr/Desktop/cc/app/controllers/users_controller.rb": {
         "lines": [
           1,
           null,
@@ -243,7 +326,7 @@
           null
         ]
       },
-      "/home/alan/cc/app/controllers/welcome_controller.rb": {
+      "/Users/wwr/Desktop/cc/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -256,43 +339,7 @@
           null
         ]
       },
-      "/home/alan/cc/app/models/message.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/home/alan/cc/app/channels/application_cable/channel.rb": {
+      "/Users/wwr/Desktop/cc/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -302,7 +349,7 @@
         "branches": {
         }
       },
-      "/home/alan/cc/app/channels/application_cable/connection.rb": {
+      "/Users/wwr/Desktop/cc/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -312,56 +359,7 @@
         "branches": {
         }
       },
-      "/home/alan/cc/app/controllers/messages_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/home/alan/cc/app/helpers/application_helper.rb": {
+      "/Users/wwr/Desktop/cc/app/helpers/application_helper.rb": {
         "lines": [
           0,
           0
@@ -369,7 +367,7 @@
         "branches": {
         }
       },
-      "/home/alan/cc/app/helpers/blogs_helper.rb": {
+      "/Users/wwr/Desktop/cc/app/helpers/blogs_helper.rb": {
         "lines": [
           0,
           0
@@ -377,7 +375,7 @@
         "branches": {
         }
       },
-      "/home/alan/cc/app/helpers/messages_helper.rb": {
+      "/Users/wwr/Desktop/cc/app/helpers/messages_helper.rb": {
         "lines": [
           0,
           0
@@ -385,7 +383,7 @@
         "branches": {
         }
       },
-      "/home/alan/cc/app/helpers/sessions_helper.rb": {
+      "/Users/wwr/Desktop/cc/app/helpers/sessions_helper.rb": {
         "lines": [
           0,
           0
@@ -393,7 +391,7 @@
         "branches": {
         }
       },
-      "/home/alan/cc/app/helpers/users_helper.rb": {
+      "/Users/wwr/Desktop/cc/app/helpers/users_helper.rb": {
         "lines": [
           0,
           0
@@ -401,7 +399,7 @@
         "branches": {
         }
       },
-      "/home/alan/cc/app/helpers/welcome_helper.rb": {
+      "/Users/wwr/Desktop/cc/app/helpers/welcome_helper.rb": {
         "lines": [
           0,
           0
@@ -409,7 +407,7 @@
         "branches": {
         }
       },
-      "/home/alan/cc/app/jobs/application_job.rb": {
+      "/Users/wwr/Desktop/cc/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -422,7 +420,7 @@
         "branches": {
         }
       },
-      "/home/alan/cc/app/mailers/application_mailer.rb": {
+      "/Users/wwr/Desktop/cc/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -433,6 +431,6 @@
         }
       }
     },
-    "timestamp": 1700014060
+    "timestamp": 1700038233
   }
 }
