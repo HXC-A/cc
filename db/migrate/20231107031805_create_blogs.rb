@@ -8,6 +8,9 @@ class CreateBlogs < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :blogs, [:user_id]
+    unless index_exists?(:blogs, [:user_id])
+      add_index :blogs, [:user_id]
+    end
+    
   end
 end
