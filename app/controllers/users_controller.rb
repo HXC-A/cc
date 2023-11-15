@@ -26,33 +26,4 @@ class UsersController < ApplicationController
       .order("id desc")
   end
 
-  def add_friend
-    friend = User.find(params[:friend_id])
-  
-    if current_user != friend
-      current_user.add_friend(friend)
-      flash[:notice] = "Added successfully"
-    else
-      flash[:notice] = "You cannot add yourself as a friend."
-    end
-  
-    redirect_back(fallback_location: root_path)
-  end
-
-  def remove_friend
-    friend = User.find(params[:friend_id])
-    if current_user.is_friend_with?(friend)
-      current_user.remove_friend(friend)
-      flash[:notice] = "Friend removed successfully"
-    else
-      flash[:notice] = "Friend not found"
-    end
-
-    redirect_back(fallback_location: root_path)
-  end
-
-  def friends
-    @friends = current_user.friends.page(params[:page] || 1).per_page(params[:per_page] || 10)
-      .order("id desc")
-  end
 end

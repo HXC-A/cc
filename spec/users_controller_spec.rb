@@ -53,4 +53,19 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "GET #blogs" do
+    let(:user) { create(:user) }
+
+    before do
+      allow(controller).to receive(:auth_user).and_return(true)
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+
+    it "assigns user's blogs as @blogs" do
+      blog = create(:blog, user: user)
+      get :blogs, params: { id: user.id }
+      expect(assigns(:blogs)).to eq([blog])
+    end
+  end
+
 end
