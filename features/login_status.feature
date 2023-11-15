@@ -5,7 +5,7 @@ Feature: Display Login Status on Web Page
 
 Scenario: User logs in
     Given I am a registered user
-    And I am on the home page
+    And I am on home page
     When I log in with valid credentials
     Then I should see a "Login Success" message
 

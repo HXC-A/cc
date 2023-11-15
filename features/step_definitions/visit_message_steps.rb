@@ -1,5 +1,5 @@
 Given('a registered user') do
-  @user = User.create!(username: 'user', password: '123456')
+  @user = User.create!(username: 'weiran', password: '123456')
 end
 
 Given('I am on the home page') do

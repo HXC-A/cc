@@ -14,7 +14,7 @@ Scenario: User uploads a new blog
     When I fill in the blog title with "My First Blog"
     And I write the blog content
     And I click the "Publish" button
-    Then I should see a success message
+    Then I should see a blog upload success message
     And my new blog should be visible on the blog list
 
 Scenario: User edits an existing blog
@@ -22,7 +22,7 @@ Scenario: User edits an existing blog
     And I have an existing blog titled "My First Blog"
     When I edit the blog content
     And I click the "Update" button
-    Then I should see a success message
+    Then I should see a blog upload success message
     And the changes to the blog should be visible on the blog list
 
 Scenario: User deletes an existing blog

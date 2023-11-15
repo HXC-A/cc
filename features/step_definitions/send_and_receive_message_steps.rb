@@ -1,10 +1,10 @@
 Given('two registered user') do
-  @user1 = User.create!(username: 'user', password: '123456')
-  @user2 = User.create!(username: 'user2', password: '123456')
+  @user1 = User.create!(username: 'weiran', password: '123456')
+  @user2 = User.create!(username: 'weiran2', password: '123456')
 end
 
 Then('I fill in the message fields') do
-  fill_in'message[receiver_username]', with: 'user2'
+  fill_in'message[receiver_username]', with: 'weiran2'
   fill_in'message[content]', with: 'Hello World'
 end
 
@@ -14,7 +14,7 @@ end
 
 When('I should see a list of outbox messages containing sented messages') do
   expect(page).to have_content('Hello World')
-  expect(page).to have_content('user2')
+  expect(page).to have_content('weiran2')
 end
 
 Then('I fill in the error received message fields') do

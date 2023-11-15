@@ -6,7 +6,7 @@ Given("I am a registered user") do
   @registered_user = true
 end
 
-Given("I am on the home page") do
+Given("I am on home page") do
   visit '/'
 end
 

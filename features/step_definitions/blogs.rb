@@ -25,7 +25,7 @@ When("I click the {string} button") do |button_text|
   click_button(button_text)
 end
 
-Then("I should see a success message") do
+Then("I should see a blog upload success message here") do
   expect(page).to have_content('Blog created successfully!')
 end
 

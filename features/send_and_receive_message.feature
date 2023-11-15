@@ -58,7 +58,7 @@ Scenario: Receive message
     And I should see a list of inbox messages
     When I click on "Inbox"
     And I should see a list of inbox messages containing received messages
-    When I click on "详情"
+    When I click on "more info"
     And I should enter message show page
     And I should see 'From'
     And I should see 'To'
