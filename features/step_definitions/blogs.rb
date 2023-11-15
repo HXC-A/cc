@@ -1,8 +1,14 @@
 # features/step_definitions/blog_steps.rb
 
-Given("I am a registered user") do
-  # Assume registration logic here
-  @registered_user = true
+Given("I am a registered user for Blog") do
+  @user = User.create!(username: "test@example.com", password: "password")
+
+  visit '/sessions/new'
+
+  fill_in 'form_username', with: @user.username
+  fill_in 'form_password', with: 'password'
+
+  click_button 'submit'
 end
 
 When("I visit the blog section") do
@@ -14,19 +20,15 @@ When("I am on the blog creation page") do
 end
 
 When("I fill in the blog title with {string}") do |blog_title|
-  fill_in 'blog_title', with: blog_title
+  fill_in 'blog[title]', with: blog_title
 end
 
 When("I write the blog content") do
   fill_in 'blog_content', with: 'This is the content of my blog.'
 end
 
-When("I click the {string} button") do |button_text|
-  click_button(button_text)
-end
-
-Then("I should see a blog upload success message here") do
-  expect(page).to have_content('Blog created successfully!')
+When("I click the Save button") do 
+  click_button 'commit'
 end
 
 Then("my new blog should be visible on the blog list") do
@@ -39,19 +41,11 @@ When("I edit the blog content") do
 end
 
 Then("the changes to the blog should be visible on the blog list") do
-  visit '/blogs'
-  expect(page).to have_content('Updated content of my blog.')
+
+  expect(page).to have_content('My edited Blog')
 end
 
-When("I navigate to the blog details page") do
-  visit '/blogs/1'
+Then("I should see a {string} button") do |button_text|
+  expect(page).to have_link(button_text, href: '/blogs/new')
 end
 
-Then("I should see a confirmation message") do
-  expect(page).to have_content('Are you sure you want to delete this blog?')
-end
-
-Then("my blog should be removed from the blog list") do
-  visit '/blogs'
-  expect(page).not_to have_content('Updated content of my blog.')
-end
