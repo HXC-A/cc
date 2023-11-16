@@ -5,13 +5,17 @@ Feature: Display Login Status on Web Page
 
 Scenario: User logs in
     Given I am a registered user
-    And I am on home page
+    Given I am on login page
     When I log in with valid credentials
-    Then I should see a "Login Success" message
-
+    And I press "Login" 
+    And I should see a welcome message
 
 Scenario: User logs out
-    Given I am a logged-in user
-    When I click the "Logout" button
-    Then I should see a "Goodbye" message
+    Given a registered user
+    Given I am on login page
+    When I enter my valid username and password
+    And I press "Login"
+    And I should see a welcome message
+    When I click on the exit link
+    Then I should see a exit messgae
     

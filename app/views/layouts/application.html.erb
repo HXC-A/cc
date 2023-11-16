@@ -41,7 +41,8 @@
               </li>
 
               <% if logged_in? %>
-                <li class="nav-item"><%= link_to "#{current_user.username}, exit", session_path(session[:user_id]), data: { "turbo-method": :delete }, class: 'nav-link' %></li>
+                <%# <li class="nav-item"><%= link_to "#{current_user.username}, exit", session_path(session[:user_id]), data: { "turbo-method": :delete }, class: 'nav-link' %>
+                <li class="nav-item"><%= link_to "exit", session_path(session[:user_id]), data: { "turbo-method": :delete }, class: 'nav-link' %></li>
               <% else %>
                 <li class="nav-item"><%= link_to "Login", new_session_path, class: 'nav-link' %></li>
               <% end %>

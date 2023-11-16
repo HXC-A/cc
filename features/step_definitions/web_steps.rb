@@ -48,3 +48,11 @@ Then ("I am on page login") do
     expect(page).to have_content('User Login')
 end
 
+When('I click on the exit link') do
+    # puts page.body
+    click_link("exit")
+end
+
+Then ("I should see a exit messgae") do
+    expect(page).to have_content('Exit Successfully')
+end
