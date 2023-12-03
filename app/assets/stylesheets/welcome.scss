@@ -1,0 +1,64 @@
+@import "bootstrap";
+
+html {
+    height: 100%;
+}
+
+body {
+    background-repeat: no-repeat;
+}
+
+body {
+    background: linear-gradient(#e66465, #9198e5);
+    color: #fff; 
+}
+  
+h1 {
+    font-size: 2.5rem; 
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+  
+p {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.portal {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    padding: 20px;
+  
+    .portal-link {
+      background: rgba(255, 255, 255, 0.2);
+      color: #4830d4; 
+      padding: 15px 30px; 
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.3); 
+      font-size: 1.2rem; 
+      text-align: center;
+      min-width: 150px; 
+      transition: background-color 0.3s, transform 0.3s;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .icon {
+        margin-right: 10px;
+      }
+  
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3); 
+        transform: scale(1.05); 
+        color: #fff; 
+      }
+    }
+}
+  
+  
+  
+  
+  

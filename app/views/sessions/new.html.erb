@@ -1,3 +1,7 @@
+<head>
+  <%= stylesheet_link_tag 'login_page', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+
 <h1>User Login</h1>
 
 <div class="row">
@@ -12,8 +16,5 @@
       <%=  submit_tag "Login", id:"submit", class: "btn btn-primary" %> 
       <%= link_to "Register", new_user_path, class: "btn btn-link" %>
     <% end %>
-  </div>
-  <div class="col-md-8">
-    <!-- Optional content can go here -->
   </div>
 </div>
