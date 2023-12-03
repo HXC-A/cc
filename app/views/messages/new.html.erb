@@ -1,31 +1,53 @@
-<h1>Create Message</h1>
+<html>
+  <style>
+    body {
+    background-repeat: no-repeat;
+    }
 
-<div class="row">
-  <div class="col-md-5">
-    <%= form_with model: @message, url: messages_path, method: :post, local: true do |form| %>
-      <% if @message.errors.any? %>
-        <div class="mb-3">
-          <ul class="list-unstyled">
-            <% @message.errors.full_messages.each do |error| %>
-              <li><i class="fa fa-exclamation-circle"></i> <%= error %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+    body {
+        /* background: linear-gradient(#e66465, #9198e5); */
+        color: #fff;
+        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
+        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
+        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
+    }
+    html {
+      height: 100%;
+    }
+  </style>
+  <body>
+    <h1>Create Message</h1>
 
-      <div class="mb-3">
-        <%= form.text_field :receiver_username, value: params.dig(:message, :receiver_username) || params[:receiver_username], class: "form-control", placeholder: "Recipient" %>
+    <div class="row">
+      <div class="col-md-5">
+        <%= form_with model: @message, url: messages_path, method: :post, local: true do |form| %>
+          <% if @message.errors.any? %>
+            <div class="mb-3">
+              <ul class="list-unstyled">
+                <% @message.errors.full_messages.each do |error| %>
+                  <li><i class="fa fa-exclamation-circle"></i> <%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="mb-3">
+            <%= form.text_field :receiver_username, value: params.dig(:message, :receiver_username) || params[:receiver_username], class: "form-control", placeholder: "Recipient" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.text_area :content, class: "form-control", placeholder: "Content" %>
+          </div>
+
+          <%= form.submit "Send", class: "btn btn-primary" %>
+        <% end %>
       </div>
 
-      <div class="mb-3">
-        <%= form.text_area :content, class: "form-control", placeholder: "Content" %>
+      <div class="col-md-7">
+        <!-- Other content -->
       </div>
+    </div>
 
-      <%= form.submit "Send", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-  <div class="col-md-7">
-    <!-- Other content -->
-  </div>
-</div>
+    
+  </body>
+</html>

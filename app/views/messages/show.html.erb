@@ -1,17 +1,38 @@
-<h1>Message</h1>
+<html>
+  <style>
+    body {
+    background-repeat: no-repeat;
+    }
 
-<div class="row">
-  <div class="col-md-5">
-    <p>From: <%= @message.sender.username %></p>
-    <p>To: <%= @message.receiver.username %></p>
-    <p><%= @message.content %></p>
+    body {
+        /* background: linear-gradient(#e66465, #9198e5); */
+        color: #fff;
+        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
+        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
+        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
+    }
+    html {
+      height: 100%;
+    }
+  </style>
+  <body>
+    <h1>Message</h1>
 
-    <% if @message.receiver == current_user %>
-      <%= link_to "Reply", new_message_path(receiver_username: @message.sender.username), class: "btn btn-link" %>
-    <% end -%>
-  </div>
+    <div class="row">
+      <div class="col-md-5">
+        <p>From: <%= @message.sender.username %></p>
+        <p>To: <%= @message.receiver.username %></p>
+        <p><%= @message.content %></p>
 
-  <div class="col-md-7">
-    <!-- Other content or empty space -->
-  </div>
-</div>
+        <% if @message.receiver == current_user %>
+          <%= link_to "Reply", new_message_path(receiver_username: @message.sender.username), class: "btn btn-link" %>
+        <% end -%>
+      </div>
+
+      <div class="col-md-7">
+        <!-- Other content or empty space -->
+      </div>
+    </div>
+
+  </body>
+</html>

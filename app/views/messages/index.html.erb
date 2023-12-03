@@ -1,37 +1,65 @@
-<h1>Message</h1>
+<!DOCTYPE html>
+<html>
+  <style>
+    body {
+    background-repeat: no-repeat;
+    }
 
-<div>
-  <%= link_to "Create Message", new_message_path, class: "btn btn-primary" %>
-</div>
+    body {
+        /* background: linear-gradient(#e66465, #9198e5); */
+        color: #fff;
+        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
+        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
+        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
+    }
+    html {
+      height: 100%;
+    }
+    tr:hover {background-color: #D6EEEE;}
+    td.ColColor { background-color: blue; }
 
-<div>
-  <%= link_to "Inbox", messages_path, class: "btn btn-secondary" %> 
-  <%= link_to "Outbox", messages_path(type: 'outbox'), class: "btn btn-secondary" %> 
-</div>
+  </style>
+  <body>
+    <div class = "frame">
+      <h1>Message</h1>
+      <div >
+        <%= link_to "Create Message", new_message_path, class: "btn btn-primary"%>
+      </div>
+      <br/>
+      <div>
+        <%= link_to "Inbox", messages_path, class: "btn btn-secondary" %> 
+        <%= link_to "Outbox", messages_path(type: 'outbox'), class: "btn btn-secondary" %> 
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-12">
+          <table class="table", style="background-color: #00bd72;">
+            <tr>
+              <th>ID</th>
+              <th><%= params[:type] == 'inbox' ? "Sender" : "Recipient" %></th>
+              <th>Content</th>
+              <th>Read</th>
+              <th></th>
+            </tr>
+            <% @messages.each do |message| %>
+              <tr>
+                <td><%= message.id %></td>
+                <td><%= params[:type] == 'inbox' ? message.sender.username : message.receiver.username %></td>
+                <td><%= truncate message.content, length: 30 %></td>
+                <td><%= message.is_read_to_s %></td>
+                <td>
+                  <%= link_to "more info", message_path(message) %>
+                </td>
+              </tr>
+            <% end -%>
+          </table>
 
-<div class="row">
-  <div class="col-12">
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th><%= params[:type] == 'inbox' ? "Sender" : "Recipient" %></th>
-        <th>Content</th>
-        <th>Read</th>
-        <th></th>
-      </tr>
-      <% @messages.each do |message| %>
-        <tr>
-          <td><%= message.id %></td>
-          <td><%= params[:type] == 'inbox' ? message.sender.username : message.receiver.username %></td>
-          <td><%= truncate message.content, length: 30 %></td>
-          <td><%= message.is_read_to_s %></td>
-          <td>
-            <%= link_to "more info", message_path(message) %>
-          </td>
-        </tr>
-      <% end -%>
-    </table>
+          <%= will_paginate @messages %>
+        </div>
+      </div>
+    </div>
+  </div>  
+  </body>
+  
 
-    <%= will_paginate @messages %>
-  </div>
-</div>
+</html>
