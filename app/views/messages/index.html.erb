@@ -1,64 +1,125 @@
 <!DOCTYPE html>
 <html>
   <style>
-    body {
-    background-repeat: no-repeat;
+    a{
+      color: white;
     }
 
     body {
-        /* background: linear-gradient(#e66465, #9198e5); */
-        color: #fff;
-        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
-        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
-        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
+      background-repeat: no-repeat;
+      color: #fff;
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
+      margin: 8rem 10rem ;
     }
+
     html {
       height: 100%;
     }
-    tr:hover {background-color: #D6EEEE;}
-    td.ColColor { background-color: blue; }
 
+    h1{
+      text-align: center;
+    }
+
+    .tabs{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #E8E7EB;
+      margin: 2rem 0;
+    }
+
+    .buttons1{
+      display: flex;
+      align-items: left;
+    }
+
+    .btn-transparent {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 0.5px solid white;
+      padding: 5px 20px;
+    }
+
+    .btn-transparent1 {
+      background-color: rgba(255, 255, 255, 0);
+      color: #EAE8EB;
+      border-right: 0.5px solid white;
+      padding: 5px 20px;
+      border-radius: 0;
+    }
+
+    .btn-transparent2 {
+      background-color: rgba(255, 255, 255, 0);
+      color: #EAE8EB;
+      border-left: 0.5px solid white;
+      padding: 5px 20px;
+      border-radius: 0;
+    }
+
+    .grid-title {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr 3fr 1fr 1fr; 
+      padding: 1.6rem;
+      border-bottom: 1px solid white;
+    }
+
+    .grid-table {
+      display: grid;
+      grid-template-columns:  1fr 1.5fr 3fr 1fr 1fr; 
+      padding: 1.6rem;
+      border-top: 1px solid white;
+    }
+
+    .grid-header {
+      font-weight: bold;
+      padding: 10px;
+      font-size: 18px;
+    }
+
+    .grid-cell {
+      padding: 10px;
+    }
+
+    .bg-clear{
+      background-color: rgba(255, 255, 255, 0.25);
+      font-size: 10px;
+    }
+    
   </style>
   <body>
     <div class = "frame">
       <h1>Message</h1>
-      <div >
-        <%= link_to "Create Message", new_message_path, class: "btn btn-primary"%>
-      </div>
-      <br/>
-      <div>
-        <%= link_to "Inbox", messages_path, class: "btn btn-secondary" %> 
-        <%= link_to "Outbox", messages_path(type: 'outbox'), class: "btn btn-secondary" %> 
-      </div>
-      <br/>
-      <div class="row">
-        <div class="col-12">
-          <table class="table", style="background-color: #00bd72;">
-            <tr>
-              <th>ID</th>
-              <th><%= params[:type] == 'inbox' ? "Sender" : "Recipient" %></th>
-              <th>Content</th>
-              <th>Read</th>
-              <th></th>
-            </tr>
-            <% @messages.each do |message| %>
-              <tr>
-                <td><%= message.id %></td>
-                <td><%= params[:type] == 'inbox' ? message.sender.username : message.receiver.username %></td>
-                <td><%= truncate message.content, length: 30 %></td>
-                <td><%= message.is_read_to_s %></td>
-                <td>
-                  <%= link_to "more info", message_path(message) %>
-                </td>
-              </tr>
-            <% end -%>
-          </table>
+      <div class="tabs">
 
-          <%= will_paginate @messages %>
+        <div class="buttons">
+          <%= link_to "Create Message", new_message_path, class: "btn btn-transparent"%>
+        </div>
+
+        <div class="buttons1">
+          <%= link_to "Inbox", messages_path, class: "btn btn-transparent1" %> 
+          <%= link_to "Outbox", messages_path(type: 'outbox'), class: "btn btn-transparent2" %> 
         </div>
       </div>
+
+      <div class="grid-title">
+        <div class="grid-header">ID</div>
+        <div class="grid-header"><%= params[:type] == 'inbox' ? "Sender" : "Recipient" %></div>
+        <div class="grid-header">Content</div>
+        <div class="grid-header">Read</div>
+        <div class="grid-header"></div>
+      </div>
+      <% @messages.each do |message| %>
+      <div class="grid-table">
+        <div class="grid-cell"><%= message.id %></div>
+        <div class="grid-cell"><%= params[:type] == 'inbox' ? message.sender.username : message.receiver.username %></div>
+        <div class="grid-cell"><%= truncate message.content, length: 50 %></div>
+        <div class="grid-cell"><%= message.is_read_to_s %></div>
+        <div class="grid-cell"><%= link_to "more info", message_path(message) %></div>
+      </div>
+      <% end -%>
+
+      <%= will_paginate @messages %>
     </div>
-  </div>  
   </body>
   
 

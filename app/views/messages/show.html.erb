@@ -1,59 +1,76 @@
 <html>
   <style>
     body {
-    background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      color: #fff;
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
     }
 
-    body {
-        /* background: linear-gradient(#e66465, #9198e5); */
-        color: #fff;
-        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
-        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
-        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
-    }
     html {
       height: 100%;
     }
 
-    .box{
-          margin: 30px;
-          border: 2px solid #D9D9D9;
-          -webkit-border-radius: .4em;
-          -moz-border-radius: .4em;
-          border-radius: .4em;
-          width: 400px;
-          padding: 30px 0;
-          justify-content: center;
-          padding: initial;
-          /* padding-left: 80px; */
-          
+    .center{
+      display: flex;
+      align-items: center; 
+      justify-content: center;
+      margin: 10rem 0;
     }
+
+    .box{
+      margin: 30px;
+      border: 2px solid #D9D9D9;
+      border-radius: .4em;
+      width: 50%;
+      padding: 30px 0;          
+    }
+
     .title{
       text-align: center;
     }
+
     .row{
-      padding-left: 20px;
+      padding: 10px 30px;
+    }
+
+    .message_content{
+      font-size: 18px;
+      padding: 2rem 0;
+    }
+
+    .button{
+      text-align: right;
+    }
+
+    .btn-link{
+      color: white;
+      border: 1px solid white;
+      background-color: rgba(255, 255, 255, 0.15);
     }
   </style>
   <body>
-    <div class = "box">
-      <div class = "title">
-        <h1>Message</h1>
-      </div>
-      <hr/>
-      <div class="row">
-        <div class="col-md-5">
-          <p>From: <%= @message.sender.username %></p>
-          <p>To: <%= @message.receiver.username %></p>
-          <p><%= @message.content %></p>
-
-          <% if @message.receiver == current_user %>
-            <%= link_to "Reply", new_message_path(receiver_username: @message.sender.username), class: "btn btn-link" %>
-          <% end -%>
+    <div class="center">
+      <div class = "box">
+        <div class = "title">
+          <h1>Message</h1>
         </div>
+        <hr/>
+        <div class="row">
+          <div class="contents">
+            <p><strong>From: </strong><%= @message.sender.username %></p>
+            <p><strong>To: </strong><%= @message.receiver.username %></p>
+            <p class="message_content"><%= @message.content %></p>
 
-        <div class="col-md-7">
-          <!-- Other content or empty space -->
+            <% if @message.receiver == current_user %>
+              <div class="button">
+                <%= link_to "Reply", new_message_path(receiver_username: @message.sender.username), class: "btn btn-link" %>
+              </div>
+            <% end -%>
+          </div>
+
+          <div class="col-md-7">
+            <!-- Other content or empty space -->
+          </div>
         </div>
       </div>
     </div>
