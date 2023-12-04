@@ -1,43 +1,59 @@
 <html>
   <style>
     body {
-    background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      color: #fff;
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
+      margin: 8rem 10rem ;
     }
 
-    body {
-        /* background: linear-gradient(#e66465, #9198e5); */
-        color: #fff;
-        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
-        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
-        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
-    }
     html {
       height: 100%;
     }
+
+    h1{
+      text-align: center;
+    }
+    
+    .grid-title {
+      display: grid;
+      grid-template-columns: 1fr 3fr; 
+      padding: 1rem;
+      border-bottom: 1px solid white;
+    }
+
+    .grid-table {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      padding: 1rem;
+      border-top: 1px solid white;
+    }
+
+    .grid-header {
+      font-weight: bold;
+      padding: 10px;
+      font-size: 18px;
+    }
+
+    .grid-cell {
+      padding: 10px;
+    }
+
   </style>
   <body>
     <h1>User List</h1>
 
-    <div class="row">
-      <div class="col-md-12">
-        <table class="table">
-          <tr>
-            <th>ID</th>
-            <th>User Name</th>
-            <th></th>
-          </tr>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td><%= user.username %></td>
-              <td></td>
-            </tr>
-          <% end -%>
-        </table>
-
-        <%= will_paginate @users %>
-      </div>
+    <div class="grid-title">
+      <div class="grid-header">ID</div>
+      <div class="grid-header">User Name</div>
     </div>
+    
+    <% @users.each do |user| %>
+      <div class="grid-table">
+        <div class="grid-cell"><%= user.id %></div>
+        <div class="grid-cell"><%= user.username %></div>
+      </div>
+    <% end -%>
+    <%= will_paginate @users %> 
   </body>
-  
 </html>

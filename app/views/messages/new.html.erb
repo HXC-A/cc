@@ -1,28 +1,64 @@
 <html>
   <style>
     body {
-    background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      color: #fff;
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
+      margin: 8rem 10rem;
     }
 
-    body {
-        /* background: linear-gradient(#e66465, #9198e5); */
-        color: #fff;
-        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
-        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
-        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
-    }
     html {
       height: 100%;
+    }
+
+
+    h1{
+      text-align: center;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+    }
+
+    .inputs {
+      padding-top: 1em; 
+      margin: auto; /* Center the column */
+      flex-basis: 100%; /* Adjust the width as needed */
+    }
+
+    .field{
+      padding: 0.5rem 0;
+    }
+
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #000; 
+      border: 1px solid #ddd;
+    }
+    
+    .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.4); 
+    }
+
+    .btn-transparent {
+      background-color: rgba(255, 255, 255, 0.25);
+      color: white;
+      border: 0.5px solid white;
+      padding: 5px 20px;
+      margin: 20px 0;
+      width:100%;
     }
   </style>
   <body>
     <h1>Create Message</h1>
 
     <div class="row">
-      <div class="col-md-5">
+      <div class="inputs">
         <%= form_with model: @message, url: messages_path, method: :post, local: true do |form| %>
           <% if @message.errors.any? %>
-            <div class="mb-3">
+            <div class="field">
               <ul class="list-unstyled">
                 <% @message.errors.full_messages.each do |error| %>
                   <li><i class="fa fa-exclamation-circle"></i> <%= error %></li>
@@ -31,15 +67,15 @@
             </div>
           <% end %>
 
-          <div class="mb-3">
+          <div class="field">
             <%= form.text_field :receiver_username, value: params.dig(:message, :receiver_username) || params[:receiver_username], class: "form-control", placeholder: "Recipient" %>
           </div>
 
-          <div class="mb-3">
+          <div class="field">
             <%= form.text_area :content, class: "form-control", placeholder: "Content" %>
           </div>
 
-          <%= form.submit "Send", class: "btn btn-primary" %>
+          <%= form.submit "Send", class: "btn btn-transparent" %>
         <% end %>
       </div>
 
