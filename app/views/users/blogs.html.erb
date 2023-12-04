@@ -1,28 +1,38 @@
 <html>
   <style>
     body {
-    background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      color: #fff;
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
     }
 
-    body {
-        /* background: linear-gradient(#e66465, #9198e5); */
-        color: #fff;
-        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
-        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
-        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
-    }
     html {
       height: 100%;
     }
-  </style>  
+
+    .buttons{
+      display: flex;
+      align-items: left;
+      gap: 6%;
+      margin: 1.5rem 0;
+      color: #E8E7EB;
+    }
+
+    .btn-transparent {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 0.5px solid white;
+      padding: 5px 20px;
+    }
+  </style> 
+
   <body>
     <h1>Blog of <%= current_user.username %></h1>
 
-    <div>
-      <%= link_to "Create a blog", new_blog_path, class: "btn btn-primary" %>
-      <%= link_to "My blog", blogs_user_path(current_user), class: "btn btn-primary" %>
+    <div class="buttons">
+      <%= link_to "Create a blog", new_blog_path, class: "btn btn-transparent" %>
+      <%= link_to "My blog", blogs_user_path(current_user), class: "btn btn-transparent" %>
     </div>
-    <br>
 
     <div class="row">
       <div class="col-sm-12">
