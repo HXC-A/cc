@@ -1,32 +1,76 @@
-<table class="table">
-    <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th></th>
-    </tr>
+<html>
+  <style>
+    a{
+      text-decoration: none;
+      color: white;
+    }
+
+    .grid-title {
+      display: grid;
+      grid-template-columns: 1fr 3fr 2fr 1fr 1fr; 
+      padding: 1.6rem;
+      border-bottom: 1px solid white;
+    }
+
+    .grid-table {
+      display: grid;
+      grid-template-columns: 1fr 3fr 2fr 1fr 1fr;
+      padding: 1.6rem;
+      border-top: 1px solid white;
+    }
+
+    .grid-header {
+      font-weight: bold;
+      padding: 10px;
+      font-size: 18px;
+    }
+
+    .grid-cell {
+      padding: 10px;
+    }
+
+    .bg-clear{
+      background-color: rgba(255, 255, 255, 0.25);
+      font-size: 10px;
+    }
+  </style>
+
+  <body>
+    <div class="grid-title">
+      <div class="grid-header">ID</div>
+      <div class="grid-header">Title</div>
+      <div class="grid-header">Author</div>
+      <div class="grid-header">Public</div>
+      <div class="grid-header"></div>
+    </div>
     <% @blogs.each do |blog| %>
-    <tr>
-        <td><%= blog.id %></td>
-        <td>
-            <%= link_to blog.title, blog_path(blog) %>  
-            <% blog.tags.each do |tag| %>
-                <span class="badge bg-secondary"><%= tag.title %></span>
-            <% end %>
-        </td>
-        <td><%= blog.user.username %></td>
-        <td>
-            <% if blog.user == current_user %>
-                <span class="<%= blog.is_public ? 'text-success' : 'text-danger' %>">
-                <%= blog.is_public ? "show" : "hide" %>
-                </span>
 
-                <%= link_to "edit", edit_blog_path(blog), class: "btn btn-primary btn-sm" %>
-            <% end %>
-        </td>
+      <div class="grid-table">
+      
+        <div class="grid-cell"><%= blog.id %></div>
+        <div class="grid-cell">
+          <strong><%= link_to blog.title, blog_path(blog) %></strong>
+          <% blog.tags.each do |tag| %>
+            <span class="badge bg-clear"><%= tag.title %></span>
+          <% end %>
+        </div>
+        <div class="grid-cell"><%= blog.user.username %></div>
+        <% if blog.user == current_user %>
+          <div class="grid-cell">
+            <span class="<%= blog.is_public ? 'text-success' : 'text-danger' %>">
+              <%= blog.is_public ? "show" : "hide" %>
+            </span>
+          </div>
+          <div class="grid-cell">
+            <%= link_to "edit", edit_blog_path(blog), class: "btn btn-transparent btn-sm" %>
+          </div>
+        <% end %>
+        
+      </div>
+    <% end %>
+    </div>
 
-    </tr>
-    <% end -%>
-</table>
+    <%= will_paginate @blogs %>
+  </body>
 
-<%= will_paginate @blogs %>
+</html>

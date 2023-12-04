@@ -2,63 +2,94 @@
   <style>
     body {
       background-repeat: no-repeat;
+      color: #fff;
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
     }
 
-    body {
-        /* background: linear-gradient(#e66465, #9198e5); */
-        color: #fff;
-        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
-        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
-        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
-    }
     html {
       height: 100%;
     }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+    }
+
+    .inputs {
+      padding-top: 1em; 
+      margin: auto; /* Center the column */
+      flex-basis: 100%; /* Adjust the width as needed */
+    }
+
+    .field{
+      padding: 0.5rem 0;
+    }
+
+    .form-control {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #000; 
+      border: 1px solid #ddd;
+    }
+    .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.4); 
+    }
+
+    .btn-transparent {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: 0.5px solid white;
+      padding: 5px 20px;
+    }
   </style>
+
   <body>
-    <h1><%= @blog.new_record? ? 'Create' : 'Edit' %> blog</h1>
 
-    <div class="row">
-      <div class="col-md-5">
-        <%= form_with model: @blog, url: (@blog.new_record? ? blogs_path : blog_path(@blog)), method: (@blog.new_record? ? :post : :put), local: true do |f| %>
-          <% if @blog.errors.any? %>
-            <div class="alert alert-danger">
-              <ul class="mb-0">
-                <% @blog.errors.full_messages.each do |error| %>
-                  <li><i class="fas fa-exclamation-circle"></i> <%= error %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
+    <div class="content">
+      <h1><%= @blog.new_record? ? 'Create' : 'Edit' %> blog</h1>
 
-          <div class="mb-3">
-            <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
-          </div>
-
-          <div class="mb-3">
-            <%= f.text_area :content, class: "form-control", placeholder: "Content" %>
-          </div>
-
-          <div class="mb-3">
-            <input type="text" name="blog[tags_string]" value="<%= @blog.tags.map(&:title).join(',') %>"
-              class="form-control" placeholder="Enter tags" aria-label="Tags" aria-describedby="tags-help">
-            <div id="tags-help" class="form-text">Tags are separated by commas</div>
-          </div>
-
-          <div class="mb-3">
-            <% [[true, "show"], [false, "hide"]].each do |public_option| %>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="blog[is_public]" id="blog_is_public_<%= public_option.first %>" value="<%= public_option.first %>" <%= 'checked' if @blog.is_public == public_option.first %> />
-                <label class="form-check-label" for="blog_is_public_<%= public_option.first %>">
-                  <%= public_option.last %>
-                </label>
+      <div class="row">
+        <div class="inputs">
+          <%= form_with model: @blog, url: (@blog.new_record? ? blogs_path : blog_path(@blog)), method: (@blog.new_record? ? :post : :put), local: true do |f| %>
+            <% if @blog.errors.any? %>
+              <div class="alert alert-danger">
+                <ul class="mb-0">
+                  <% @blog.errors.full_messages.each do |error| %>
+                    <li><i class="fas fa-exclamation-circle"></i> <%= error %></li>
+                  <% end %>
+                </ul>
               </div>
             <% end %>
-          </div>
 
+            <div class="field">
+              <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+            </div>
 
-          <%= f.submit "Save", class: "btn btn-primary" %> 
-        <% end %>
+            <div class="field">
+              <%= f.text_area :content, class: "form-control", placeholder: "Content" %>
+            </div>
+
+            <div class="field">
+              <input type="text" name="blog[tags_string]" value="<%= @blog.tags.map(&:title).join(',') %>"
+                class="form-control" placeholder="Enter tags" aria-label="Tags" aria-describedby="tags-help">
+              <div id="tags-help" class="form-text">Tags are separated by commas</div>
+            </div>
+
+            <div class="field">
+              <% [[true, "show"], [false, "hide"]].each do |public_option| %>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="blog[is_public]" id="blog_is_public_<%= public_option.first %>" value="<%= public_option.first %>" <%= 'checked' if @blog.is_public == public_option.first %> />
+                  <label class="form-check-label" for="blog_is_public_<%= public_option.first %>">
+                    <%= public_option.last %>
+                  </label>
+                </div>
+              <% end %>
+            </div>
+
+            <%= f.submit "Save", class: "btn btn-transparent" %> 
+          <% end %>
+        </div>
+
       </div>
 
       <div class="col-md-7">
