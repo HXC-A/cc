@@ -1,11 +1,31 @@
-<h1><%= @blog.title %></h1>
+<html>
+  <style>
+    body {
+      background-repeat: no-repeat;
+    }
 
-<div class="row">
-  <div class="col-sm-5">
-    <p>Author: <%= @blog.user.username %>, <%= @blog.created_at %></p>
-    <%= @blog.content %>
-  </div>
+    body {
+        /* background: linear-gradient(#e66465, #9198e5); */
+        color: #fff;
+        /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
+        /* background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); */
+        background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); 
+    }
+    html {
+      height: 100%;
+    }
+  </style>
+  <body>
+    <h1><%= @blog.title %></h1>
 
-  <div class="col-sm-7">
-  </div>
-</div>
+    <div class="row">
+      <div class="col-sm-5">
+        <p>Author: <%= @blog.user.username %>, <%= @blog.created_at %></p>
+        <%= @blog.content %>
+      </div>
+
+      <div class="col-sm-7">
+      </div>
+    </div>
+  </body>
+</html>
