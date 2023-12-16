@@ -9,7 +9,7 @@ Scenario: Successful send message
     When I enter my valid username and password
     And I press "Login"
     And I should see a welcome message
-    And I click on "Messages"
+    And I click on "Messages" in the "portal"
     And I should see a list of inbox messages
     When I click on "Create Message"
     Then I am redirected to the send message page
@@ -25,7 +25,7 @@ Scenario: Unsuccessful send message with error received
     When I enter my valid username and password
     And I press "Login"
     And I should see a welcome message
-    And I click on "Messages"
+    And I click on "Messages" in the "navbar"
     And I should see a list of inbox messages
     When I click on "Create Message"
     Then I am redirected to the send message page
@@ -39,7 +39,7 @@ Scenario: Unsuccessful send message with missing fields
     When I enter my valid username and password
     And I press "Login"
     And I should see a welcome message
-    And I click on "Messages"
+    And I click on "Messages" in the "navbar"
     And I should see a list of inbox messages
     When I click on "Create Message"
     Then I am redirected to the send message page
@@ -54,7 +54,7 @@ Scenario: Receive message
     When I enter my valid username and password
     And I press "Login"
     And I should see a welcome message
-    And I click on "Messages"
+    And I click on "Messages" in the "navbar"
     And I should see a list of inbox messages
     When I click on "Inbox"
     And I should see a list of inbox messages containing received messages

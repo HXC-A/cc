@@ -1,5 +1,5 @@
 Given('a registered user') do
-  @user = User.create!(username: 'weiran', password: '123456')
+  @user = User.create!(username: 'weiran', email: "weiran@columbia.edu", password: '123456')
 end
 
 Given('I am on the home page') do
@@ -8,6 +8,23 @@ end
 
 Given('I click on {string}') do |string|
   click_on string
+end
+
+And /^(?:|I )click on "([^"]*)" in the "([^"]*)"$/ do |link_or_button, location|
+  within(location_selector(location)) do
+    click_on(link_or_button)
+  end
+end
+
+def location_selector(location)
+  case location
+  when 'navbar'
+    'nav' 
+  when 'portal'
+    '.portal'
+  else
+    raise "Unknown location: #{location}"
+  end
 end
 
 Then('I am redirected to the login page') do

@@ -17,24 +17,24 @@ RSpec.describe UsersController, type: :controller do
     context 'with valid parameters' do
       it 'creates a new user' do
         expect do
-          post :create, params: { user: { username: 'newuser', password: 'password' } }
+          post :create, params: { user: { username: 'newuser', email: 'newuser@columbia.edu', password: 'password' } }
         end.to change(User, :count).by(1)
       end
 
       it 'redirects to the login page' do
-        post :create, params: { user: { username: 'newuser', password: 'password' } }
+        post :create, params: { user: { username: 'newuser', email: 'newuser@columbia.edu', password: 'password' } }
         expect(response).to redirect_to(new_session_path)
       end
     end
     context 'with invalid parameters' do
       it 'does not create a new user' do
         expect do
-          post :create, params: { user: { username: '', password: '' } }
+          post :create, params: { user: { username: '', email: '', password: '' } }
         end.not_to change(User, :count)
       end
 
       it 're-renders the new template' do
-        post :create, params: { user: { username: '', password: '' } }
+        post :create, params: { user: { username: '', email: '', password: '' } }
         expect(response).to render_template(:new)
       end
     end
@@ -42,12 +42,12 @@ RSpec.describe UsersController, type: :controller do
     context 'with invalid attributes' do
       it 'does not save the user' do
         expect {
-          post :create, params: { user: { username: nil, password: nil } }
+          post :create, params: { user: { username: nil, email: nil, password: nil } }
         }.to_not change(User, :count)
       end
       
       it 're-renders the new template' do
-        post :create, params: { user: { username: nil, password: nil } }
+        post :create, params: { user: { username: nil, email: nil, password: nil } }
         expect(response).to render_template(:new)
       end
     end

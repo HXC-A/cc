@@ -1,7 +1,7 @@
 # features/step_definitions/blog_steps.rb
 
 Given("I am a registered user for Blog") do
-  @user = User.create!(username: "test@example.com", password: "password")
+  @user = User.create!(username: "testuser", email: "test@columbia.edu", password: "password")
 
   visit '/sessions/new'
 

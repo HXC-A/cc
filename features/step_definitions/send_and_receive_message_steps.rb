@@ -1,6 +1,6 @@
 Given('two registered user') do
-  @user1 = User.create!(username: 'weiran', password: '123456')
-  @user2 = User.create!(username: 'weiran2', password: '123456')
+  @user1 = User.create!(username: 'weiran', email: "weiran@columbia.edu", password: '123456')
+  @user2 = User.create!(username: 'weiran2', email: "weiran2@columbia.edu", password: '123456')
 end
 
 Then('I fill in the message fields') do
