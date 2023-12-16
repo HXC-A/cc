@@ -4,7 +4,18 @@ end
 
 When('I fill in username and password') do
   fill_in 'user[username]', with: 'weiran'
+  fill_in 'user[email]', with: 'weiran@columbia.edu' 
   fill_in 'user[password]', with: '123456'
+end
+
+When('I fill in username, non-Columbia email, and password') do
+  fill_in 'user[username]', with: 'weiran'
+  fill_in 'user[email]', with: 'weiran@example.com' # Non-Columbia email
+  fill_in 'user[password]', with: '123456'
+end
+
+Then('I should see an error message about Columbia email') do
+  expect(page).to have_content('Email must be a Columbia University email')
 end
 
 When('I should redirected to the login page') do

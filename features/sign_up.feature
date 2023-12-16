@@ -14,3 +14,9 @@ Scenario: Unsuccessful signup with missing fields
     When I fill in only username
     And I press "Registration"
     Then I am on page register
+
+Scenario: Unsuccessful signup with non-Columbia email
+    Given I am on register page
+    When I fill in username, non-Columbia email, and password
+    And I press "Registration"
+    Then I should see an error message about Columbia email
