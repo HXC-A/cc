@@ -1,5 +1,4 @@
-Feature: display list of movies filtered by MPAA rating
-
+Feature: 
     As a registered user
     I want to log into my account 
     So that I can access my classmate connect application.

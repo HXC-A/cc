@@ -49,3 +49,38 @@ Then("I should see a {string} button") do |button_text|
   expect(page).to have_link(button_text, href: '/blogs/new')
 end
 
+When(/^I fill in the tags with "(.*?)"$/) do |tags|
+  fill_in 'blog[tags_string]', with: tags
+end
+
+Then(/^the blog should have tags "(.*?)"$/) do |tags|
+  tags.split(', ').each do |tag|
+    expect(page).to have_content(tag)
+  end
+end
+
+Then(/^I should see a error "(.*?)"$/) do |message|
+  expect(page).to have_content(message)
+end
+
+Then(/^I should be on the blog creation page$/) do
+  expect(current_path).to eq new_blog_path 
+end
+
+When(/^I fill in the blog content with "(.*?)"$/) do |content|
+  fill_in 'Content', with: content 
+end
+
+
+When('I click on the blog post titled {string}') do |string|
+  click_on string
+end
+
+Then(/^I should see "(.*?)" as the blog title$/) do |title|
+  expect(page).to have_content(title)
+end
+
+When("I edit the blog content to empty") do
+  visit '/blogs/1/edit'
+  fill_in 'blog_content', with: ''
+end
